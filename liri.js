@@ -20,17 +20,17 @@ for (var i = 2; i < nodeArgs.length; i++) {
         userSearch += nodeArgs[i];
     }
 }
-if(action == "do-what-it-says"){
-  fs.readFile("random.txt", "utf8", function(error, data) {
-    if (error) {
-      return console.log(error);
-    }
-    // console.log(data);
-    action = data.split(" ",1);
-    process.argv[3] = data.split(" ")
-    console.log("ACTION: " + action);
-  });
-}
+// if(action == "do-what-it-says"){
+//   fs.readFile("random.txt", "utf8", function(error, data) {
+//     if (error) {
+//       return console.log(error);
+//     }
+//     // console.log(data);
+//     action = data.split(" ",1);
+//     process.argv[3] = data.split(" ")
+//     console.log("ACTION: " + action);
+//   });
+// }
 // console.log("ACTION: " + action);
 switch(action){
 // * `my-tweets`
@@ -93,7 +93,7 @@ request(queryUrl, function(error, response, body) {
 
 break;
 
-* `do-what-it-says`
+// * `do-what-it-says`
 case "do-what-it-says":
 fs.readFile("random.txt", "utf8", function(error, data) {
     if (error) {

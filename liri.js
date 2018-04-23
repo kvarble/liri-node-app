@@ -93,15 +93,15 @@ request(queryUrl, function(error, response, body) {
 
 break;
 
-// * `do-what-it-says`
-// case "do-what-it-says":
-// fs.readFile("random.txt", "utf8", function(error, data) {
-//     if (error) {
-//       return console.log(error);
-//     }
-//     console.log(data);
-//     var dataArr = data.split(",");
-//     console.log(dataArr);
-//   });
+* `do-what-it-says`
+case "do-what-it-says":
+fs.readFile("random.txt", "utf8", function(error, data) {
+    if (error) {
+      return console.log(error);
+    }
+    console.log(data);
+    var dataArr = data.split(",");
+    console.log(dataArr);
+  });
 
 }

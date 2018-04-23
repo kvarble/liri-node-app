@@ -1,3 +1,5 @@
+import { CLIENT_RENEG_LIMIT } from "tls";
+
 // import { request } from "http";
 require("dotenv").config();
 var keys = require("./keys.js")
@@ -20,18 +22,7 @@ for (var i = 2; i < nodeArgs.length; i++) {
         userSearch += nodeArgs[i];
     }
 }
-if(action == "do-what-it-says"){
-  fs.readFile("random.txt", "utf8", function(error, data) {
-    if (error) {
-      return console.log(error);
-    }
-    // console.log(data);
-    action = data.split(" ",1);
-    process.argv[3] = data.split(" ")
-    console.log("ACTION: " + action);
-  });
-}
-// console.log("ACTION: " + action);
+
 switch(action){
 // * `my-tweets`
 case "my-tweets":
@@ -53,7 +44,7 @@ spotify.search({ type: 'track', query: userSearch}, function(err, data) {
     if (err) {
       return console.log('Error occurred: ' + err);
     }
-    // if (!userSearch){userSearch = "The Sign"}
+
     console.log("Album Name: " + data.tracks.items[i].album.name + 
     "\nArtist: " + data.tracks.items[i].artists[0].name +
     "\nSong Name: " + data.tracks.items[i].name +
@@ -94,14 +85,26 @@ request(queryUrl, function(error, response, body) {
 break;
 
 // * `do-what-it-says`
-// case "do-what-it-says":
-// fs.readFile("random.txt", "utf8", function(error, data) {
-//     if (error) {
-//       return console.log(error);
-//     }
-//     console.log(data);
-//     var dataArr = data.split(",");
-//     console.log(dataArr);
-//   });
+case "do-what-it-says":
+var textFile = process.argv;
 
-}
+    
+    fs.prependFile("random.txt", node + liri.js, function(err) {
+        if (err) {
+          return console.log(err);
+        }
+      });
+      fs.readFile("random.txt", "utf8", function(error, data) {
+        if (error) {
+          return console.log(error);
+        }
+        console.log(data);
+    for (var i = 0; i < data.length; i++) {
+        if (parse(data[i])) {
+          console.log(node + liritwo.js + parse(data[i]));
+          
+        }
+      }
+
+  });
+} 
